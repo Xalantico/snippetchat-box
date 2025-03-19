@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ChatWidget from '@/components/ChatWidget/ChatWidget';
 
 const Index = () => {
@@ -17,6 +18,14 @@ const Index = () => {
             A beautiful, customizable chat widget that can be embedded in any website, 
             with real-time message streaming capabilities.
           </p>
+          <div className="mt-8">
+            <Link 
+              to="/embed" 
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
+            >
+              Embedding Instructions
+            </Link>
+          </div>
         </header>
 
         <div className="max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl">
@@ -63,6 +72,14 @@ const Index = () => {
                   </svg>
                 </span>
                 <span>Fully responsive design that works on all devices</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </span>
+                <span>Easy to embed on any website with a few lines of code</span>
               </li>
             </ul>
             
