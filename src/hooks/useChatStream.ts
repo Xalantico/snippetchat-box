@@ -39,6 +39,21 @@ export function useChatStream({ apiEndpoint, onStreamComplete }: UseChatStreamOp
       // In a real implementation, this would make an API call to your streaming endpoint
       try {
         const mockResponse = generateMockResponse(message);
+        
+        // Check if it's a special LIST command - send as one chunk
+        if (message.trim().toUpperCase() === "LIST") {
+          await new Promise(resolve => setTimeout(resolve, 500));
+          onChunk(mockResponse);
+          setIsStreaming(false);
+          setCurrentStreamingId(null);
+          
+          if (onStreamComplete) {
+            onStreamComplete(messageId);
+          }
+          return;
+        }
+        
+        // Normal text streaming for other messages
         const chunks = mockResponse.split(' ');
         
         for (let i = 0; i < chunks.length; i++) {
@@ -86,7 +101,30 @@ export function useChatStream({ apiEndpoint, onStreamComplete }: UseChatStreamOp
 function generateMockResponse(message: string): string {
   const lowercaseMessage = message.toLowerCase();
   
-  if (lowercaseMessage.includes('hello') || lowercaseMessage.includes('hi')) {
+  if (message.trim().toUpperCase() === "LIST") {
+    return `
+<list-cards>
+  <card>
+    <image>https://images.unsplash.com/photo-1488590528505-98d2b5aba04b</image>
+    <title>Web Development</title>
+    <description>Learn to build beautiful, responsive websites with the latest web technologies.</description>
+    <button>Learn More</button>
+  </card>
+  <card>
+    <image>https://images.unsplash.com/photo-1518770660439-4636190af475</image>
+    <title>Machine Learning</title>
+    <description>Discover how AI and ML are transforming industries and creating new opportunities.</description>
+    <button>Explore</button>
+  </card>
+  <card>
+    <image>https://images.unsplash.com/photo-1461749280684-dccba630e2f6</image>
+    <title>Cloud Computing</title>
+    <description>Master cloud technologies and learn to deploy scalable applications.</description>
+    <button>Get Started</button>
+  </card>
+</list-cards>
+    `;
+  } else if (lowercaseMessage.includes('hello') || lowercaseMessage.includes('hi')) {
     return "Hello! How can I assist you today? I'm here to help with any questions you might have about our products or services.";
   } else if (lowercaseMessage.includes('help')) {
     return "I'd be happy to help! Could you please provide more details about what you need assistance with? Our support team is available 24/7 to address your concerns.";

@@ -46,6 +46,14 @@ const Index = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </span>
+                <span>Rich card layouts with images and interactive buttons</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </span>
                 <span>Smooth animations and glass morphism effects</span>
               </li>
               <li className="flex items-start">
@@ -56,18 +64,13 @@ const Index = () => {
                 </span>
                 <span>Fully responsive design that works on all devices</span>
               </li>
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
-                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </span>
-                <span>Lightweight and easy to integrate</span>
-              </li>
             </ul>
             
             <div className="text-center">
               <p className="text-gray-600 dark:text-gray-300 mb-3">Try it now! Click the chat button in the corner.</p>
+              <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg inline-block mt-4">
+                <p className="text-blue-700 dark:text-blue-300 font-medium">Type <code className="bg-white dark:bg-gray-800 px-2 py-1 rounded">LIST</code> to see a special card list view!</p>
+              </div>
             </div>
           </div>
         </div>
